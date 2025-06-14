@@ -229,3 +229,50 @@ body.posthumano .back-button a:hover {
   margin-bottom: 10px;
   transition: transform 0.3s ease;
 }
+
+/* RESPONSIVE – PARA PANTALLAS CHICAS */
+
+@media (max-width: 768px) {
+  header h1,
+  footer p,
+  .project-description p,
+  .back-button a {
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 0 15px;
+  }
+
+  .project-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project-link {
+    width: 90%;
+    margin-bottom: 30px;
+  }
+
+  .project-link img {
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+  .gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .gallery img {
+    width: 90%;
+    max-width: 500px;
+    height: auto;
+    margin: 10px 0;
+  }
+
+  .lightbox-img {
+    max-width: 90vw;
+    max-height: 80vh;
+  }
+}
