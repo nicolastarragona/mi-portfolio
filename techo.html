@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>TECHO Uruguay – Nicolás Tarragona Zurbrigk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+</head>
+<body>
+
+  <header>
+    <h1>TECHO Uruguay</h1>
+  </header>
+
+  <main>
+    <div class="gallery" id="gallery-techo"></div>
+
+    <div class="back-button">
+      <a href="index.html">← Volver al inicio</a>
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox hidden">
+    <span class="close">&times;</span>
+    <img class="lightbox-img" src="" alt="" />
+    <div class="nav left">&#10094;</div>
+    <div class="nav right">&#10095;</div>
+  </div>
+
+  <footer>
+    <p>© 2025 Nicolás Tarragona Zurbrigk</p>
+  </footer>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+  <script>
+    const gallery = document.getElementById("gallery-techo");
+
+    const images = [
+      "DSC05138.jpg", "DSC05292.jpg", "DSC05362.jpg", "DSC05174.jpg",
+      "DSC05192.jpg", "DSC05203.jpg", "DSC05274.jpg"
+    ];
+
+    let currentIndex = 0;
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.querySelector(".lightbox-img");
+    const closeBtn = document.querySelector(".close");
+    const leftNav = document.querySelector(".nav.left");
+    const rightNav = document.querySelector(".nav.right");
+
+    function showGallery() {
+      images.forEach((src, index) => {
+        const img = document.createElement("img");
+        img.src = `img/${src}`;
+        img.alt = "";
+        img.setAttribute("data-aos", "fade-up");
+        img.addEventListener("click", () => openLightbox(index));
+        gallery.appendChild(img);
+      });
+    }
+
+    function openLightbox(index) {
+      currentIndex = index;
+      lightboxImg.src = `img/${images[currentIndex]}`;
+      lightbox.classList.remove("hidden");
+    }
+
+    function closeLightbox() {
+      lightbox.classList.add("hidden");
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      lightboxImg.src = `img/${images[currentIndex]}`;
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      lightboxImg.src = `img/${images[currentIndex]}`;
+    }
+
+    closeBtn.addEventListener("click", closeLightbox);
+    rightNav.addEventListener("click", nextImage);
+    leftNav.addEventListener("click", prevImage);
+
+    showGallery();
+  </script>
+
+</body>
+</html>

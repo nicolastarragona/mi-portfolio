@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Posthumano – Nicolás Tarragona Zurbrigk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+</head>
+<body class="posthumano">
+
+  <header>
+    <h1>Posthumano</h1>
+  </header>
+
+  <main>
+    <section class="project-description">
+      <p><em>Un espacio abierto para la experimentación visual.</em><br>
+      Acá no hay series cerradas ni ideas terminadas: solo yo, probando cosas.  
+      Retratos, alteraciones, glitch, cuerpo, juego y error.  
+      <br><strong>(En constante movimiento.)</strong></p>
+    </section>
+
+    <div class="gallery" id="gallery-posthumano"></div>
+
+    <div class="back-button">
+      <a href="index.html">← Volver al inicio</a>
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox hidden">
+    <span class="close">&times;</span>
+    <img class="lightbox-img" src="" alt="" />
+    <div class="nav left">&#10094;</div>
+    <div class="nav right">&#10095;</div>
+  </div>
+
+  <footer>
+    <p>© 2025 Nicolás Tarragona Zurbrigk</p>
+  </footer>
+
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+  <script>
+    const gallery = document.getElementById("gallery-posthumano");
+
+    const images = [
+      "D8547337-D2C2-41C0-8EFD-DE36AA0D05D0 2.jpg",
+      "DSC02771.jpg",
+      "DSC03513.JPG",
+      "DSC04883.JPG",
+      "IMG_8138.JPG"
+    ];
+
+    let currentIndex = 0;
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.querySelector(".lightbox-img");
+    const closeBtn = document.querySelector(".close");
+    const leftNav = document.querySelector(".nav.left");
+    const rightNav = document.querySelector(".nav.right");
+
+    function showGallery() {
+      images.forEach((src, index) => {
+        const img = document.createElement("img");
+        img.src = `img/${src}`;
+        img.alt = "";
+        img.setAttribute("data-aos", "fade-up");
+        img.addEventListener("click", () => openLightbox(index));
+        gallery.appendChild(img);
+      });
+    }
+
+    function openLightbox(index) {
+      currentIndex = index;
+      lightboxImg.src = `img/${images[currentIndex]}`;
+      lightbox.classList.remove("hidden");
+    }
+
+    function closeLightbox() {
+      lightbox.classList.add("hidden");
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      lightboxImg.src = `img/${images[currentIndex]}`;
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      lightboxImg.src = `img/${images[currentIndex]}`;
+    }
+
+    closeBtn.addEventListener("click", closeLightbox);
+    rightNav.addEventListener("click", nextImage);
+    leftNav.addEventListener("click", prevImage);
+
+    showGallery();
+  </script>
+
+</body>
+</html>
