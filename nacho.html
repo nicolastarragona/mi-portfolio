@@ -33,7 +33,6 @@
     <p>© 2025 Nicolás Tarragona Zurbrigk</p>
   </footer>
 
-  <!-- AOS JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
@@ -43,9 +42,9 @@
     const gallery = document.getElementById("gallery-nacho");
 
     const images = [
-      "IMG_8315.jpg", "IMG_8356.jpg", "nachos-792.jpg", "nachos-790.jpg",
-      "nachos-900.jpg", "nachos-475.jpg", "nachos-566.jpg", "nachos-697.jpg",
-      "nachos-577.jpg", "nachos-687.jpg"
+      "nachos-01", "nachos-02", "nachos-03", "nachos-04",
+      "nachos-05", "nachos-06", "nachos-07", "nachos-08",
+      "nachos-09", "nachos-10"
     ];
 
     let currentIndex = 0;
@@ -57,10 +56,16 @@
     const rightNav = document.querySelector(".nav.right");
 
     function showGallery() {
-      images.forEach((src, index) => {
+      images.forEach((name, index) => {
         const img = document.createElement("img");
-        img.src = `img/${src}`;
-        img.alt = "";
+        img.src = `img/${name}-600.webp`;
+        img.srcset = `
+          img/${name}-600.webp 600w,
+          img/${name}-1200.webp 1200w
+        `;
+        img.sizes = "(max-width: 768px) 90vw, 800px";
+        img.alt = `Nacho ${index + 1}`;
+        img.loading = "lazy";
         img.setAttribute("data-aos", "fade-up");
         img.addEventListener("click", () => openLightbox(index));
         gallery.appendChild(img);
@@ -69,7 +74,7 @@
 
     function openLightbox(index) {
       currentIndex = index;
-      lightboxImg.src = `img/${images[currentIndex]}`;
+      lightboxImg.src = `img/${images[currentIndex]}-1200.webp`;
       lightbox.classList.remove("hidden");
     }
 
@@ -79,12 +84,12 @@
 
     function nextImage() {
       currentIndex = (currentIndex + 1) % images.length;
-      lightboxImg.src = `img/${images[currentIndex]}`;
+      lightboxImg.src = `img/${images[currentIndex]}-1200.webp`;
     }
 
     function prevImage() {
       currentIndex = (currentIndex - 1 + images.length) % images.length;
-      lightboxImg.src = `img/${images[currentIndex]}`;
+      lightboxImg.src = `img/${images[currentIndex]}-1200.webp`;
     }
 
     closeBtn.addEventListener("click", closeLightbox);

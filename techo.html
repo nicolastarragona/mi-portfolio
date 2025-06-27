@@ -42,9 +42,10 @@
   <script>
     const gallery = document.getElementById("gallery-techo");
 
+    // Lista de imágenes sin extensión
     const images = [
-      "DSC05138.jpg", "DSC05292.jpg", "DSC05362.jpg", "DSC05174.jpg",
-      "DSC05192.jpg", "DSC05203.jpg", "DSC05274.jpg"
+      "techo-01", "techo-02", "techo-03", "techo-04",
+      "techo-05", "techo-06", "techo-07"
     ];
 
     let currentIndex = 0;
@@ -56,10 +57,16 @@
     const rightNav = document.querySelector(".nav.right");
 
     function showGallery() {
-      images.forEach((src, index) => {
+      images.forEach((name, index) => {
         const img = document.createElement("img");
-        img.src = `img/${src}`;
-        img.alt = "";
+        img.src = `img/${name}-600.webp`;
+        img.srcset = `
+          img/${name}-600.webp 600w,
+          img/${name}-1200.webp 1200w
+        `;
+        img.sizes = "(max-width: 768px) 90vw, 300px";
+        img.alt = `TECHO Uruguay ${index + 1}`;
+        img.loading = "lazy";
         img.setAttribute("data-aos", "fade-up");
         img.addEventListener("click", () => openLightbox(index));
         gallery.appendChild(img);
@@ -68,7 +75,7 @@
 
     function openLightbox(index) {
       currentIndex = index;
-      lightboxImg.src = `img/${images[currentIndex]}`;
+      lightboxImg.src = `img/${images[currentIndex]}-1200.webp`;
       lightbox.classList.remove("hidden");
     }
 
@@ -78,12 +85,12 @@
 
     function nextImage() {
       currentIndex = (currentIndex + 1) % images.length;
-      lightboxImg.src = `img/${images[currentIndex]}`;
+      lightboxImg.src = `img/${images[currentIndex]}-1200.webp`;
     }
 
     function prevImage() {
       currentIndex = (currentIndex - 1 + images.length) % images.length;
-      lightboxImg.src = `img/${images[currentIndex]}`;
+      lightboxImg.src = `img/${images[currentIndex]}-1200.webp`;
     }
 
     closeBtn.addEventListener("click", closeLightbox);

@@ -14,12 +14,11 @@
   </header>
 
   <main>
-    <section class="project-description">
-      <p><em>Un espacio abierto para la experimentación visual.</em><br>
-      Acá no hay series cerradas ni ideas terminadas: solo yo, probando cosas.  
-      Retratos, alteraciones, glitch, cuerpo, juego y error.  
-      <br><strong>(En constante movimiento.)</strong></p>
-    </section>
+    <div class="project-description">
+      <p>
+        Proyecto experimental donde exploro retratos, texturas y una atmósfera alternativa. Una búsqueda estética personal que se aparta de mis otros trabajos. Es una página que está en constante movimiento.
+      </p>
+    </div>
 
     <div class="gallery" id="gallery-posthumano"></div>
 
@@ -40,7 +39,7 @@
     <p>© 2025 Nicolás Tarragona Zurbrigk</p>
   </footer>
 
-  <!-- AOS -->
+  <!-- AOS JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
@@ -50,11 +49,11 @@
     const gallery = document.getElementById("gallery-posthumano");
 
     const images = [
-      "D8547337-D2C2-41C0-8EFD-DE36AA0D05D0 2.jpg",
-      "DSC02771.jpg",
-      "DSC03513.JPG",
-      "DSC04883.JPG",
-      "IMG_8138.JPG"
+      "posthumano-01",
+      "posthumano-02",
+      "posthumano-03",
+      "posthumano-04",
+      "posthumano-05"
     ];
 
     let currentIndex = 0;
@@ -66,10 +65,16 @@
     const rightNav = document.querySelector(".nav.right");
 
     function showGallery() {
-      images.forEach((src, index) => {
+      images.forEach((name, index) => {
         const img = document.createElement("img");
-        img.src = `img/${src}`;
-        img.alt = "";
+        img.src = `img/${name}-600.webp`;
+        img.srcset = `
+          img/${name}-600.webp 600w,
+          img/${name}-1200.webp 1200w
+        `;
+        img.sizes = "(max-width: 768px) 90vw, 800px";
+        img.alt = `Posthumano ${index + 1}`;
+        img.loading = "lazy";
         img.setAttribute("data-aos", "fade-up");
         img.addEventListener("click", () => openLightbox(index));
         gallery.appendChild(img);
@@ -78,7 +83,7 @@
 
     function openLightbox(index) {
       currentIndex = index;
-      lightboxImg.src = `img/${images[currentIndex]}`;
+      lightboxImg.src = `img/${images[currentIndex]}-1200.webp`;
       lightbox.classList.remove("hidden");
     }
 
@@ -88,12 +93,12 @@
 
     function nextImage() {
       currentIndex = (currentIndex + 1) % images.length;
-      lightboxImg.src = `img/${images[currentIndex]}`;
+      lightboxImg.src = `img/${images[currentIndex]}-1200.webp`;
     }
 
     function prevImage() {
       currentIndex = (currentIndex - 1 + images.length) % images.length;
-      lightboxImg.src = `img/${images[currentIndex]}`;
+      lightboxImg.src = `img/${images[currentIndex]}-1200.webp`;
     }
 
     closeBtn.addEventListener("click", closeLightbox);
