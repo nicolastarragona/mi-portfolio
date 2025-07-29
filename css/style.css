@@ -1,84 +1,32 @@
-/* RESET GENERAL */
-body {
+/* ===== RESET GENERAL ===== */
+* {
   margin: 0;
-  font-family: 'Helvetica Neue', sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
   background: #f9f9f9;
   color: #111;
+  line-height: 1.6;
 }
 
-/* MODO OSCURO AUTOMÁTICO */
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #111;
-    color: #eee;
-  }
-  header, footer {
-    background: #1a1a1a;
-    border-color: #333;
-  }
-  a {
-    color: #ddd;
-  }
-  .gallery img {
-    filter: brightness(0.95);
-  }
-}
-
-/* SPLASH SCREEN */
-#splash {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  color: #111;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  animation: fadeOut 2s ease 2s forwards;
-}
-.firma {
-  font-size: 2rem;
-  font-weight: bold;
-  opacity: 0;
-  animation: fadeIn 2s ease forwards;
-}
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-/* ENCABEZADO Y FOOTER */
+/* ===== HEADER ===== */
 header {
   padding: 20px;
   text-align: center;
   background: #fff;
   border-bottom: 1px solid #ddd;
 }
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #fff;
-  border-top: 1px solid #ddd;
-  font-size: 0.9rem;
-}
-footer a {
-  text-decoration: none;
+
+header h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
   color: #111;
 }
-footer a:hover {
-  text-decoration: underline;
-}
 
-/* PORTADA – ENLACES A PROYECTOS */
+/* ===== INDEX – ENLACES A PROYECTOS ===== */
 .project-links {
   display: flex;
   flex-wrap: wrap;
@@ -86,58 +34,55 @@ footer a:hover {
   gap: 30px;
   padding: 40px 20px;
 }
+
 .project-link {
   text-align: center;
-  max-width: 400px;
+  max-width: 350px;
   text-decoration: none;
   color: inherit;
 }
+
 .project-link img {
   width: 100%;
-  height: 500px;
+  height: 450px;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 8px;
   margin-bottom: 10px;
   transition: transform 0.3s ease;
 }
+
 .project-link:hover img {
   transform: scale(1.03);
 }
 
-/* GALERÍA DE CADA PROYECTO */
+.project-link h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* ===== GALERÍA DE PROYECTOS ===== */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 10px;
+  gap: 15px;
   padding: 20px;
 }
+
 .gallery img {
   width: 100%;
-  height: auto;
-  border-radius: 5px;
+  height: 420px;
   object-fit: cover;
+  border-radius: 6px;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
+
 .gallery img:hover {
-  transform: scale(1.03);
+  transform: scale(1.02);
+  filter: brightness(1.1);
 }
 
-/* BOTÓN VOLVER */
-.back-button {
-  text-align: center;
-  margin: 40px 0;
-}
-.back-button a {
-  text-decoration: none;
-  font-size: 1rem;
-  color: #555;
-}
-.back-button a:hover {
-  text-decoration: underline;
-}
-
-/* LIGHTBOX */
+/* ===== LIGHTBOX ===== */
 .lightbox {
   position: fixed;
   top: 0; left: 0;
@@ -150,13 +95,17 @@ footer a:hover {
   flex-direction: column;
   padding: 20px;
 }
+
 .lightbox.hidden {
   display: none;
 }
+
 .lightbox-img {
   max-width: 90%;
   max-height: 80%;
+  border-radius: 6px;
 }
+
 .lightbox .close {
   position: absolute;
   top: 30px;
@@ -165,6 +114,7 @@ footer a:hover {
   color: white;
   cursor: pointer;
 }
+
 .nav {
   position: absolute;
   top: 50%;
@@ -174,45 +124,128 @@ footer a:hover {
   user-select: none;
   transform: translateY(-50%);
 }
-.nav.left {
-  left: 40px;
-}
-.nav.right {
-  right: 40px;
+
+.nav.left { left: 40px; }
+.nav.right { right: 40px; }
+
+/* ===== BOTÓN VOLVER ===== */
+.back-button {
+  text-align: center;
+  margin: 30px 0;
 }
 
-/* ESTILO VISUAL PARA POSTHUMANO */
+.back-button a {
+  text-decoration: none;
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.back-button a:hover {
+  text-decoration: underline;
+}
+
+/* ===== SOBRE MÍ ===== */
+.about-me {
+  background: #111;
+  color: #eee;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  max-width: 1200px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.about-photo img {
+  width: 320px;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.about-photo img:hover {
+  transform: scale(1.03);
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text h2 {
+  font-size: 2.4rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.about-links {
+  display: flex;
+  gap: 15px;
+}
+
+.about-links .btn {
+  text-decoration: none;
+  background: #fff;
+  color: #111;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.about-links .btn:hover {
+  background: #888;
+  color: #fff;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #111;
+  color: #eee;
+  font-size: 0.9rem;
+  border-top: 1px solid #333;
+}
+
+footer a {
+  color: #eee;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ===== POSTHUMANO ===== */
 body.posthumano {
   background: #000;
   color: #eee;
 }
 
-body.posthumano a {
-  color: #ddd;
-}
-
-body.posthumano header,
-body.posthumano footer {
-  background: #000;
-  border: none;
-}
-
-body.posthumano .project-description {
-  max-width: 700px;
-  margin: 40px auto;
-  padding: 0 20px;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #ccc;
-  font-style: italic;
+body.posthumano header h1 {
+  color: #eee;
 }
 
 body.posthumano .gallery img {
-  width: 100%;
-  height: 400px;
+  height: 450px;
   object-fit: cover;
-  border-radius: 5px;
-  transition: transform 0.4s ease, filter 0.3s ease;
+  border-radius: 6px;
 }
 
 body.posthumano .gallery img:hover {
@@ -220,70 +253,34 @@ body.posthumano .gallery img:hover {
   filter: grayscale(0%) contrast(120%);
 }
 
-body.posthumano .back-button a {
-  color: #888;
-}
-
-body.posthumano .back-button a:hover {
-  color: #fff;
-  text-shadow: 0 0 4px #fff;
-}
-
-/* RESPONSIVE – PARA PANTALLAS CHICAS */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  header h1,
-  footer p,
-  .project-description p,
-  .back-button a {
-    text-align: center;
-    font-size: 1.1rem;
-    padding: 0 15px;
-  }
-
   .project-links {
     flex-direction: column;
     align-items: center;
   }
 
-  .project-link {
-    width: 90%;
-    margin-bottom: 30px;
-  }
-
   .project-link img {
     height: auto;
-    max-width: 100%;
-    object-fit: cover;
-  }
-
-  .gallery {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-height: 400px;
   }
 
   .gallery img {
-    width: 90%;
-    max-width: 500px;
     height: auto;
-    margin: 10px 0;
+    max-height: 350px;
   }
 
-  .lightbox-img {
-    max-width: 90vw;
-    max-height: 80vh;
+  .about-container {
+    flex-direction: column;
+    text-align: center;
   }
 
-  body.posthumano .gallery img {
-    width: 90%;
-    height: 300px;
-    object-fit: cover;
+  .about-photo img {
+    width: 240px;
+    height: 320px;
   }
 
-  .project-links img {
-    max-width: 300px;
-    width: 100%;
-    height: auto;
-    display: block;
+  .about-text h2 {
+    font-size: 2rem;
   }
 }
