@@ -3,9 +3,10 @@
 // ==========================
 const galleries = {
   nacho: [
-    "nachos-01","nachos-02","nachos-03","nachos-04","nachos-05",
-    "nachos-06","nachos-07","nachos-08","nachos-09","nachos-10"
-  ],
+  "nachos-07","nachos-01","nachos-02","nachos-03",
+  "nachos-04","nachos-05","nachos-06","nachos-08",
+  "nachos-09","nachos-10"
+],
   techo: [
     "techo-01","techo-02","techo-03","techo-04","techo-05","techo-06","techo-07"
   ],
@@ -14,10 +15,10 @@ const galleries = {
     "inescapable-05","inescapable-06","inescapable-07","inescapable-08",
     "inescapable-09","inescapable-10","inescapable-11"
   ],
-  cya: [
-    "cya-01","cya-02","cya-03","cya-04","cya-05","cya-06","cya-07",
-    "cya-08","cya-09","cya-10","cya-11","cya-12","cya-13","cya-14","cya-15","cya-16","cya-17"
-  ],
+ cya: [
+  "cya-19","cya-01","cya-02","cya-03","cya-04","cya-05","cya-06","cya-07",
+  "cya-08","cya-09","cya-10","cya-11","cya-12","cya-13","cya-14","cya-15","cya-16","cya-17","cya-18"
+],
   parres: [
     "parres-01","parres-02","parres-03","parres-04","parres-05",
     "parres-06","parres-07","parres-09"
