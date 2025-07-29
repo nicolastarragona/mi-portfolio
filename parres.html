@@ -2,37 +2,55 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Parres – Portafolio Nicolás Tarragona Zurbrigk</title>
+  <title>Parres – Nicolás Tarragona Zurbrigk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Serie fotográfica Parres por Nicolás Tarragona Zurbrigk" />
+
+  <!-- Tipografía y CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+
+  <!-- AOS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 </head>
 <body>
-  <header><h1>Parres</h1></header>
 
+  <!-- Header -->
+  <header>
+    <a href="index.html" class="logo">← Portafolio</a>
+    <h1>Parres</h1>
+  </header>
+
+  <!-- Galería dinámica -->
   <main>
-    <section class="gallery" id="gallery">
-      <img src="img/parres-01-1200.webp" srcset="img/parres-01-600.webp 600w, img/parres-01-1200.webp 1200w" alt="Parres 01" loading="lazy" data-aos="fade-up" />
-      <img src="img/parres-02-1200.webp" srcset="img/parres-02-600.webp 600w, img/parres-02-1200.webp 1200w" alt="Parres 02" loading="lazy" data-aos="fade-up" />
-      <img src="img/parres-03-1200.webp" srcset="img/parres-03-600.webp 600w, img/parres-03-1200.webp 1200w" alt="Parres 03" loading="lazy" data-aos="fade-up" />
-      <img src="img/parres-04-1200.webp" srcset="img/parres-04-600.webp 600w, img/parres-04-1200.webp 1200w" alt="Parres 04" loading="lazy" data-aos="fade-up" />
-      <img src="img/parres-05-1200.webp" srcset="img/parres-05-600.webp 600w, img/parres-05-1200.webp 1200w" alt="Parres 05" loading="lazy" data-aos="fade-up" />
-      <img src="img/parres-06-1200.webp" srcset="img/parres-06-600.webp 600w, img/parres-06-1200.webp 1200w" alt="Parres 06" loading="lazy" data-aos="fade-up" />
-      <img src="img/parres-07-1200.webp" srcset="img/parres-07-600.webp 600w, img/parres-07-1200.webp 1200w" alt="Parres 07" loading="lazy" data-aos="fade-up" />
-      <img src="img/parres-09-1200.webp" srcset="img/parres-09-600.webp 600w, img/parres-09-1200.webp 1200w" alt="Parres 09" loading="lazy" data-aos="fade-up" />
-    </section>
-    <div class="back-button"><a href="index.html">← Volver al inicio</a></div>
+    <div class="gallery" id="gallery-parres" aria-label="Galería Parres"></div>
+
+    <!-- Botón volver -->
+    <div class="back-button">
+      <a href="index.html">← Volver al inicio</a>
+    </div>
   </main>
 
-  <div id="lightbox" class="lightbox hidden">
-    <span class="close">&times;</span>
-    <img class="lightbox-img" src="" alt="Imagen ampliada" />
-    <span class="nav left">&#10094;</span>
-    <span class="nav right">&#10095;</span>
+  <!-- Lightbox global -->
+  <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true">
+    <span class="close" aria-label="Cerrar">&times;</span>
+    <img class="lightbox-img" src="" alt="Foto ampliada" />
+    <div class="nav left" aria-label="Anterior">&#10094;</div>
+    <div class="nav right" aria-label="Siguiente">&#10095;</div>
   </div>
 
-  <script src="js/lightbox.js"></script>
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Nicolás Tarragona Zurbrigk</p>
+    <p>
+      <a href="https://instagram.com/nicolastz_" target="_blank" rel="noopener">Instagram</a> ·
+      <a href="mailto:nicolastarragonaph@gmail.com">Email</a>
+    </p>
+  </footer>
+
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>AOS.init({ duration: 1000, once: true });</script>
+  <script src="js/main.js"></script>
 </body>
 </html>

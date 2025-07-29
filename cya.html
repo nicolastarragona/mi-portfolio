@@ -2,54 +2,127 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Camila & Alexander – Portafolio Nicolás Tarragona Zurbrigk</title>
+  <title>Boda Camila & Alexander – Nicolás Tarragona Zurbrigk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Boda Camila & Alexander, fotografía por Nicolás Tarragona Zurbrigk" />
+
+  <!-- Tipografía y CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
-  <!-- AOS CSS -->
+
+  <!-- AOS Animations -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 </head>
 <body>
+
+  <!-- Header -->
   <header>
+    <a href="index.html" class="logo">← Portafolio</a>
     <h1>Camila & Alexander</h1>
   </header>
 
+  <!-- Galería -->
   <main>
-    <section class="gallery" id="gallery">
-      <img src="img/cya-01-1200.webp" srcset="img/cya-01-600.webp 600w, img/cya-01-1200.webp 1200w" alt="C&A 01" loading="lazy" data-aos="fade-up" />
-      <img src="img/cya-02-1200.webp" srcset="img/cya-02-600.webp 600w, img/cya-02-1200.webp 1200w" alt="C&A 02" loading="lazy" data-aos="fade-up" />
-      <img src="img/cya-03-1200.webp" srcset="img/cya-03-600.webp 600w, img/cya-03-1200.webp 1200w" alt="C&A 03" loading="lazy" data-aos="fade-up" />
-      <img src="img/cya-04-1200.webp" srcset="img/cya-04-600.webp 600w, img/cya-04-1200.webp 1200w" alt="C&A 04" loading="lazy" data-aos="fade-up" />
-      <img src="img/cya-05-1200.webp" srcset="img/cya-05-600.webp 600w, img/cya-05-1200.webp 1200w" alt="C&A 05" loading="lazy" data-aos="fade-up" />
-      <img src="img/cya-06-1200.webp" srcset="img/cya-06-600.webp 600w, img/cya-06-1200.webp 1200w" alt="C&A 06" loading="lazy" data-aos="fade-up" />
-      <img src="img/cya-07-1200.webp" srcset="img/cya-07-600.webp 600w, img/cya-07-1200.webp 1200w" alt="C&A 07" loading="lazy" data-aos="fade-up" />
-      <img src="img/cya-08-1200.webp" srcset="img/cya-08-600.webp 600w, img/cya-08-1200.webp 1200w" alt="C&A 08" loading="lazy" data-aos="fade-up" />
-      <img src="img/cya-09-1200.webp" srcset="img/cya-09-600.webp 600w, img/cya-09-1200.webp 1200w" alt="C&A 09" loading="lazy" data-aos="fade-up" />
-      <img src="img/cya-10-1200.webp" srcset="img/cya-10-600.webp 600w, img/cya-10-1200.webp 1200w" alt="C&A 10" loading="lazy" data-aos="fade-up" />
-      <img src="img/cya-11-1200.webp" srcset="img/cya-11-600.webp 600w, img/cya-11-1200.webp 1200w" alt="C&A 11" loading="lazy" data-aos="fade-up" />
-      <img src="img/cya-12-1200.webp" srcset="img/cya-12-600.webp 600w, img/cya-12-1200.webp 1200w" alt="C&A 12" loading="lazy" data-aos="fade-up" />
-      <img src="img/cya-13-1200.webp" srcset="img/cya-13-600.webp 600w, img/cya-13-1200.webp 1200w" alt="C&A 13" loading="lazy" data-aos="fade-up" />
-      <img src="img/cya-14-1200.webp" srcset="img/cya-14-600.webp 600w, img/cya-14-1200.webp 1200w" alt="C&A 14" loading="lazy" data-aos="fade-up" />
-      <img src="img/cya-15-1200.webp" srcset="img/cya-15-600.webp 600w, img/cya-15-1200.webp 1200w" alt="C&A 15" loading="lazy" data-aos="fade-up" />
-      <img src="img/cya-16-1200.webp" srcset="img/cya-16-600.webp 600w, img/cya-16-1200.webp 1200w" alt="C&A 16" loading="lazy" data-aos="fade-up" />
-      <img src="img/cya-17-1200.webp" srcset="img/cya-17-600.webp 600w, img/cya-17-1200.webp 1200w" alt="C&A 17" loading="lazy" data-aos="fade-up" />
-    </section>
+    <section class="gallery" id="gallery-cya" aria-label="Galería boda Camila & Alexander"></section>
 
+    <!-- Botón Volver -->
     <div class="back-button">
       <a href="index.html">← Volver al inicio</a>
     </div>
   </main>
 
   <!-- Lightbox -->
-  <div id="lightbox" class="lightbox hidden">
-    <span class="close">&times;</span>
-    <img class="lightbox-img" src="" alt="Imagen ampliada" />
-    <span class="nav left">&#10094;</span>
-    <span class="nav right">&#10095;</span>
+  <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true">
+    <button class="close" aria-label="Cerrar">&times;</button>
+    <img class="lightbox-img" src="" alt="Foto ampliada" />
+    <button class="nav left" aria-label="Anterior">&#10094;</button>
+    <button class="nav right" aria-label="Siguiente">&#10095;</button>
   </div>
 
-  <script src="js/lightbox.js"></script>
-  <!-- AOS JS -->
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Nicolás Tarragona Zurbrigk</p>
+    <p>
+      <a href="https://instagram.com/nicolastz_" target="_blank" rel="noopener">Instagram</a> ·
+      <a href="mailto:nicolastarragonaph@gmail.com">Email</a>
+    </p>
+  </footer>
+
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>AOS.init({ duration: 1000, once: true });</script>
+
+  <script>
+    // Variables principales
+    const gallery = document.getElementById("gallery-cya");
+    const images = [
+      "cya-01","cya-02","cya-03","cya-04","cya-05","cya-06","cya-07","cya-08","cya-09",
+      "cya-10","cya-11","cya-12","cya-13","cya-14","cya-15","cya-16","cya-17"
+    ];
+    let currentIndex = 0;
+
+    // Lightbox
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.querySelector(".lightbox-img");
+    const closeBtn = document.querySelector(".close");
+    const navLeft = document.querySelector(".nav.left");
+    const navRight = document.querySelector(".nav.right");
+
+    // Renderizar galería
+    function renderGallery() {
+      images.forEach((name, index) => {
+        const img = document.createElement("img");
+        img.src = `img/${name}-600.webp`;
+        img.srcset = `
+          img/${name}-600.webp 600w,
+          img/${name}-1200.webp 1200w
+        `;
+        img.sizes = "(max-width: 768px) 90vw, 600px";
+        img.alt = `Foto boda Camila y Alexander ${index + 1}`;
+        img.loading = "lazy";
+        img.decoding = "async";
+        img.setAttribute("data-aos", "fade-up");
+        img.addEventListener("click", () => openLightbox(index));
+        gallery.appendChild(img);
+      });
+    }
+
+    // Abrir lightbox
+    function openLightbox(index) {
+      currentIndex = index;
+      lightboxImg.src = `img/${images[currentIndex]}-1200.webp`;
+      lightbox.classList.remove("hidden");
+    }
+
+    // Cerrar lightbox
+    function closeLightbox() {
+      lightbox.classList.add("hidden");
+    }
+
+    // Navegación
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      lightboxImg.src = `img/${images[currentIndex]}-1200.webp`;
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      lightboxImg.src = `img/${images[currentIndex]}-1200.webp`;
+    }
+
+    // Eventos
+    closeBtn.addEventListener("click", closeLightbox);
+    navRight.addEventListener("click", nextImage);
+    navLeft.addEventListener("click", prevImage);
+
+    // Teclado
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowRight") nextImage();
+      if (e.key === "ArrowLeft") prevImage();
+    });
+
+    renderGallery();
+  </script>
 </body>
 </html>

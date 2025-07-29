@@ -4,59 +4,69 @@
   <meta charset="UTF-8" />
   <title>TECHO Uruguay – Nicolás Tarragona Zurbrigk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Proyecto TECHO Uruguay por Nicolás Tarragona Zurbrigk" />
+
+  <!-- Tipografía y CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <!-- AOS Animations -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 </head>
 <body>
 
+  <!-- Header -->
   <header>
+    <a href="index.html" class="logo">← Portafolio</a>
     <h1>TECHO Uruguay</h1>
   </header>
 
+  <!-- Galería -->
   <main>
-    <div class="gallery" id="gallery-techo"></div>
+    <section class="gallery" id="gallery-techo" aria-label="Galería TECHO Uruguay"></section>
 
+    <!-- Botón Volver -->
     <div class="back-button">
       <a href="index.html">← Volver al inicio</a>
     </div>
   </main>
 
   <!-- Lightbox -->
-  <div id="lightbox" class="lightbox hidden">
-    <span class="close">&times;</span>
-    <img class="lightbox-img" src="" alt="" />
-    <div class="nav left">&#10094;</div>
-    <div class="nav right">&#10095;</div>
+  <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true">
+    <button class="close" aria-label="Cerrar">&times;</button>
+    <img class="lightbox-img" src="" alt="Imagen ampliada" />
+    <button class="nav left" aria-label="Anterior">&#10094;</button>
+    <button class="nav right" aria-label="Siguiente">&#10095;</button>
   </div>
 
+  <!-- Footer -->
   <footer>
     <p>© 2025 Nicolás Tarragona Zurbrigk</p>
+    <p>
+      <a href="https://instagram.com/nicolastz_" target="_blank" rel="noopener">Instagram</a> ·
+      <a href="mailto:nicolastarragonaph@gmail.com">Email</a>
+    </p>
   </footer>
 
-  <!-- AOS JS -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 1000, once: true });</script>
 
   <script>
+    // Variables principales
     const gallery = document.getElementById("gallery-techo");
-
-    // Lista de imágenes sin extensión
-    const images = [
-      "techo-01", "techo-02", "techo-03", "techo-04",
-      "techo-05", "techo-06", "techo-07"
-    ];
-
+    const images = ["techo-01","techo-02","techo-03","techo-04","techo-05","techo-06","techo-07"];
     let currentIndex = 0;
 
+    // Lightbox
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.querySelector(".lightbox-img");
     const closeBtn = document.querySelector(".close");
-    const leftNav = document.querySelector(".nav.left");
-    const rightNav = document.querySelector(".nav.right");
+    const navLeft = document.querySelector(".nav.left");
+    const navRight = document.querySelector(".nav.right");
 
-    function showGallery() {
+    // Renderizar galería
+    function renderGallery() {
       images.forEach((name, index) => {
         const img = document.createElement("img");
         img.src = `img/${name}-600.webp`;
@@ -64,25 +74,29 @@
           img/${name}-600.webp 600w,
           img/${name}-1200.webp 1200w
         `;
-        img.sizes = "(max-width: 768px) 90vw, 300px";
-        img.alt = `TECHO Uruguay ${index + 1}`;
+        img.sizes = "(max-width: 768px) 90vw, 600px";
+        img.alt = `Foto TECHO ${index + 1}`;
         img.loading = "lazy";
+        img.decoding = "async";
         img.setAttribute("data-aos", "fade-up");
         img.addEventListener("click", () => openLightbox(index));
         gallery.appendChild(img);
       });
     }
 
+    // Abrir lightbox
     function openLightbox(index) {
       currentIndex = index;
       lightboxImg.src = `img/${images[currentIndex]}-1200.webp`;
       lightbox.classList.remove("hidden");
     }
 
+    // Cerrar lightbox
     function closeLightbox() {
       lightbox.classList.add("hidden");
     }
 
+    // Navegación
     function nextImage() {
       currentIndex = (currentIndex + 1) % images.length;
       lightboxImg.src = `img/${images[currentIndex]}-1200.webp`;
@@ -93,12 +107,19 @@
       lightboxImg.src = `img/${images[currentIndex]}-1200.webp`;
     }
 
+    // Eventos
     closeBtn.addEventListener("click", closeLightbox);
-    rightNav.addEventListener("click", nextImage);
-    leftNav.addEventListener("click", prevImage);
+    navRight.addEventListener("click", nextImage);
+    navLeft.addEventListener("click", prevImage);
 
-    showGallery();
+    // Teclado
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowRight") nextImage();
+      if (e.key === "ArrowLeft") prevImage();
+    });
+
+    renderGallery();
   </script>
-
 </body>
 </html>

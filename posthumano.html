@@ -4,109 +4,61 @@
   <meta charset="UTF-8" />
   <title>Posthumano – Nicolás Tarragona Zurbrigk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Proyecto experimental Posthumano por Nicolás Tarragona Zurbrigk" />
+
+  <!-- Tipografía y CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 </head>
 <body class="posthumano">
 
+  <!-- Header -->
   <header>
+    <a href="index.html" class="logo">← Portafolio</a>
     <h1>Posthumano</h1>
   </header>
 
+  <!-- Texto conceptual -->
   <main>
     <div class="project-description">
       <p>
-        Proyecto experimental donde exploro retratos, texturas y una atmósfera alternativa. Una búsqueda estética personal que se aparta de mis otros trabajos. Es una página que está en constante movimiento.
+        Proyecto experimental que explora la identidad, el cuerpo y lo que queda después.
+        Una búsqueda estética que se aparta de mis otros trabajos. Siempre en movimiento.
       </p>
     </div>
 
-    <div class="gallery" id="gallery-posthumano"></div>
+    <!-- Galería dinámica -->
+    <div class="gallery" id="gallery-posthumano" aria-label="Galería Posthumano"></div>
 
+    <!-- Botón volver -->
     <div class="back-button">
       <a href="index.html">← Volver al inicio</a>
     </div>
   </main>
 
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox hidden">
-    <span class="close">&times;</span>
-    <img class="lightbox-img" src="" alt="" />
-    <div class="nav left">&#10094;</div>
-    <div class="nav right">&#10095;</div>
+  <!-- Lightbox global -->
+  <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true">
+    <span class="close" aria-label="Cerrar">&times;</span>
+    <img class="lightbox-img" src="" alt="Foto ampliada" />
+    <div class="nav left" aria-label="Anterior">&#10094;</div>
+    <div class="nav right" aria-label="Siguiente">&#10095;</div>
   </div>
 
+  <!-- Footer -->
   <footer>
     <p>© 2025 Nicolás Tarragona Zurbrigk</p>
+    <p>
+      <a href="https://instagram.com/nicolastz_" target="_blank" rel="noopener">Instagram</a> ·
+      <a href="mailto:nicolastarragonaph@gmail.com">Email</a>
+    </p>
   </footer>
 
-  <!-- AOS JS -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
-
-  <script>
-    const gallery = document.getElementById("gallery-posthumano");
-
-    const images = [
-      "posthumano-01",
-      "posthumano-02",
-      "posthumano-03",
-      "posthumano-04",
-      "posthumano-05"
-    ];
-
-    let currentIndex = 0;
-
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.querySelector(".lightbox-img");
-    const closeBtn = document.querySelector(".close");
-    const leftNav = document.querySelector(".nav.left");
-    const rightNav = document.querySelector(".nav.right");
-
-    function showGallery() {
-      images.forEach((name, index) => {
-        const img = document.createElement("img");
-        img.src = `img/${name}-600.webp`;
-        img.srcset = `
-          img/${name}-600.webp 600w,
-          img/${name}-1200.webp 1200w
-        `;
-        img.sizes = "(max-width: 768px) 90vw, 800px";
-        img.alt = `Posthumano ${index + 1}`;
-        img.loading = "lazy";
-        img.setAttribute("data-aos", "fade-up");
-        img.addEventListener("click", () => openLightbox(index));
-        gallery.appendChild(img);
-      });
-    }
-
-    function openLightbox(index) {
-      currentIndex = index;
-      lightboxImg.src = `img/${images[currentIndex]}-1200.webp`;
-      lightbox.classList.remove("hidden");
-    }
-
-    function closeLightbox() {
-      lightbox.classList.add("hidden");
-    }
-
-    function nextImage() {
-      currentIndex = (currentIndex + 1) % images.length;
-      lightboxImg.src = `img/${images[currentIndex]}-1200.webp`;
-    }
-
-    function prevImage() {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      lightboxImg.src = `img/${images[currentIndex]}-1200.webp`;
-    }
-
-    closeBtn.addEventListener("click", closeLightbox);
-    rightNav.addEventListener("click", nextImage);
-    leftNav.addEventListener("click", prevImage);
-
-    showGallery();
-  </script>
-
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 1000, once: true });</script>
+  <script src="js/main.js"></script>
 </body>
 </html>
